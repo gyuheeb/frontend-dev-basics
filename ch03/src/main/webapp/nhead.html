@@ -4,56 +4,134 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-*{
-	margin:0;
-	padding:0;
-}
-body{
-	font-family: "맑은 고딕","돋움" ;
+* { margin:0; padding:0 }
+body {
+	font-family: "맑은 고딕", 돋움;
 	font-size: 12px;
-	color: #333;	
-	
+	color: #333;
 }
-.header{
-	width:630px;
+
+.header {
+	width: 800px;
 	height: 100px;
 	margin: 50px auto;
-	background-color: #ddd;
-}
-.header .logo, .header .search-box .btn-search bu { 
-	float: left;
+
+
+	
 }
 
-.header .logo{
+.header .logo, .header .search-box {
+	float: left;
+	
+}
+
+.header .logo {
+	font-size: 0;
 	width: 222px;
 	height: 52px;
-	font-size:0;
 	overflow: hidden;
-	background:url('/ch03/images/n-sprite.png') no-repeat 0 -158px /442px 428px;
-	
+	background: url('/ch03/images/n-sprite.png') no-repeat 0 -158px / 442px 428px; 
+}
 
+.search-box{
+	width: 400px;
+	height: 52px;
+	margin-left: 20px;
+	border: 2px solid #03cf5d;
+	width: 450px;
+	height: 50px;
+	
 }
 
 .search-box a, .search-box input{
-	display:bock;
+	display:block;
+}
+
+.search-box a, .search-box input, .btn-search button{
+	float:right;
+}
+
+.search-box input {
+	float:left;
+	width: 330px;
+    padding: 14px 5px;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    outline: 0;
+    border: none;
+    
+}
+
+.btn-search button{
+	display:block;
+    width: 56px;
+    height: 50px;
+    background-color: #19ce60;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    border: 1px solid #19ce60;
 
 }
+.search-box a, .search-box input, .search-box .btn-search button {
+	display: block;
+
+}
+.search-box a, .search-box input{
+
+	display:block;
+}
+
+
+
+.icon{
+	display: inline-block;
+    width: 22px;
+    height: 22px;
+   	background: url('/ch03/images/n-sprite.png') no-repeat -420px -24px / 442px 428px;
+    vertical-align: top;
+    }
+
+
+
+
+.input_text{
+	width:444px;	
+	height:24px;
+	padding:13px 15px;
+}
+
+
+#drop{
+	width: 10px;
+	height: 20px;
+	margin: 20px 10px 0 0;
+	background:url('/ch03/images/n-sprite.png') no-repeat -158px -151px / 442px 428px;
+
+}
+#keyboard{
+	width: 20px;
+	height: 28px;
+	margin: 20px 10px 0 0;
+	background:url('/ch03/images/n-sprite.png') no-repeat -398px -267px / 442px 428px;
+}
+
+
+
+
 </style>
 </head>
 <body>
-	<div>
+	<div class="header">
 		<h1 class="logo">네이버</h1>
 		<div class="search-box">
-		<div class="btn-search">
-		<button>검색</button>
+			<div class="btn-search">
+				<button><span class="icon"></span></button>
+			</div>
+			<a href="#" id="drop"></a>
+			<a href="#" id="keyboard"></a>
+			<input type="text" />
 		</div>
-		
-		<a href="#">드롭다운</a>
-		<a href="#"> 키보드</a>
-		<input type="text" />
-		
-		</div>
-			
 	</div>
 </body>
 </html>
