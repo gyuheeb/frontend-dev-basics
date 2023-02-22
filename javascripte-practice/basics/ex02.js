@@ -80,7 +80,7 @@ console.log("f1 :" + typeof(f1));
 console.log("f2 :" + typeof(f2));
 console.log("f3 :" + typeof(f3));
 
-console.log("=== 원시 타입도 메소드를 호출 할 수 있다. ===");
+console.log("=== 원시 타입도 메소드를 호출 할 수 있다.(유사 객체) ===");
 console.log(b2.valueOf());
-console.log(b.valueOf());
+console.log(b.valueOf()); // new Boolean(b).valueOf()
 
