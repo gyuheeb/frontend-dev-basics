@@ -66,4 +66,4 @@ console.log('=== for ~ in : 객체 ===');
 for(prop in a6){
     console.log(prop, a6[prop]);
 }
-console.log(a6.length);
+
