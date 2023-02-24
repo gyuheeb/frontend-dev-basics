@@ -7,7 +7,7 @@
 </head>
 <script>
 var onTabClicked = function(){
-	var liSelected = document.querySelectorAll('li.selected');
+	var liSelected = document.querySelector('li.selected');
 	liSelected && (liSelected.className='');
 	
 	this.className = "selected";
