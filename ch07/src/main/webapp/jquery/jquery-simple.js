@@ -16,12 +16,13 @@ _jQuery.prototype.click = function(handler){
 	for(var i=0; i<this.length; i++){
 		this[i].addEventListener('click', handler);
 	}
+	return this;
 }
 
 var jQuery = function(param){
 	if(typeof(param) === 'function'){
 		window.addEventListener('load', param);
-		return this;
+		return;
 	}
 	
 	var elements; 
