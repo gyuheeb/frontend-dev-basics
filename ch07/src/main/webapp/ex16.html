@@ -6,6 +6,8 @@
 <script>
 $(function(){
 	setTimeout(function(){
+		$("li:contains('샘플')").css("color","red");
+		$("li:has('strong')").css("color","pink");    //strong을 가지고 있는 li 선택됨
 	}, 1000);
 });
 </script>
