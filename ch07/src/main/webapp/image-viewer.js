@@ -1,4 +1,16 @@
 imageViewer={
+	init: function(){
+		for(var i = 0; i<100; i++){
+			this._changeImage();
+		}
+	},
+	_changeImage: function(){
+		var index = Math.floor(Math.random()*this._images.length);
+		console.log(index);
+	},
+	_intervalId: null
+		
+	,
 	_images:[
 		{name: 'Chrysanthemum',file: '/images/Chrysanthemum.jpg'},
 		{name: 'Desert',file: '/images/Desert.jpg'},
