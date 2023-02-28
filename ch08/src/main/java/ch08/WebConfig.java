@@ -13,6 +13,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -39,6 +40,32 @@ public class WebConfig implements WebMvcConfigurer {
 				Arrays.asList(new MediaType("text","html",Charset.forName("utf-8"))));
 		return messageConverter;
 	}
+	
+	/**
+	 * 1. Marshalling
+	 * 		 데이터(Object)를 xml로 만드는 것
+	 * 2. Unmarshalling
+	 * 		 xml 데이터를 특정 데이터 형태(Object)로 만드는 것
+	 * 3. How to
+	 * 		 1) OXM(Object Xml Mapping)
+	 * 			:XML 데이터와 객체를 매핑
+	 * 			:MarshlingHttpMessageConverter
+	 * 
+	 * 		 2) JAXB(Java Architecture for XML Binding)
+	 * 			:OXM 도와주는 도구
+	 * 			:Marshling/Unmarshling을 어노테이션 기반으로 한다.
+	 * 			:JAXBAnnitatoin(@XmlElementRoot)를 사용하는 직관적인 매핑
+	 * 			:Jaxb2RootElementHttpMessageConverter
+	 */
+	
+	@Bean
+	public Jaxb2RootElementHttpMessageConverter jaxb2RootElementHttpMessageConverter() {
+		Jaxb2RootElementHttpMessageConverter messageConverter = new Jaxb2RootElementHttpMessageConverter();
+		messageConverter.setSupportedMediaTypes(
+				Arrays.asList(new MediaType("text","html",Charset.forName("utf-8"))));
+		return messageConverter;
+	}
+	
 	@Bean
 	public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
 		Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder()
@@ -58,6 +85,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(stringHttpMessageConverter());
+		converters.add(jaxb2RootElementHttpMessageConverter());
 		converters.add(mappingJackson2HttpMessageConverter());
 		
 	}
