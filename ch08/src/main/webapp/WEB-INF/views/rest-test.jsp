@@ -28,6 +28,46 @@ $(function(){
 			}
 		});
 	});
+	$("#read").click(function(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/api/user",
+			type:"get",
+			dataType:"json",
+			success:function(response){
+				console.log(response);
+			}
+		});
+	});
+	$("#update").click(function(){
+		var vo={
+				name:"둘리",
+				password:"12345",
+				gender: "male"
+		};
+		$.ajax({
+			url:"${pageContext.request.contextPath}/api/user/10",
+			type:"put",
+			dataType:"json",
+			contentType: "application/json",
+			data: JSON.stringify(vo),
+			success:function(response){
+				console.log(response);
+			}
+		});
+	});
+	$("#delete").click(function(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/api/user/10",
+			type:"delete",
+			dataType:"json",
+			contentType: "application/x-www-form-urlencoded",
+			data:"password=1234",
+			success:function(response){
+				console.log(response);
+			}
+		});
+	});
+	
 });
 </script>
 </head>
@@ -36,10 +76,10 @@ $(function(){
 	
 	<button id="create">Create(post)</button>
 	<br><br>
-	<button id="Read">Read(get)</button>
+	<button id="read">Read(get)</button>
 		<br><br>
-	<button id="Update">Update(put)</button>
+	<button id="update">Update(put)</button>
 		<br><br>
-	<button id="Delete">Delete(delete)</button>
+	<button id="delete">Delete(delete)</button>
 </body>
 </html>
