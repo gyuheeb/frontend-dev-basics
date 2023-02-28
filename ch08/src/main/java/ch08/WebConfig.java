@@ -59,6 +59,7 @@ public class WebConfig implements WebMvcConfigurer {
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(stringHttpMessageConverter());
 		converters.add(mappingJackson2HttpMessageConverter());
+		
 	}
 
 	// Default Servlet Handler
