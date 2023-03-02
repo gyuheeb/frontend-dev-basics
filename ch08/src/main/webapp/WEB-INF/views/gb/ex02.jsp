@@ -13,8 +13,8 @@
 //
 	var fetch = function(){
 		$.ajax({
-			url:"${pageContext.request.contextPath}/guestbook/api",
-			type: "ㅎㄷㅅ",
+			url:"${pageContext.request.contextPath}/guestbook/api?sno=10",
+			type: "get",
 			dataType: "json",
 			success: function(response){
 				if(reponse.result === 'fail'){
