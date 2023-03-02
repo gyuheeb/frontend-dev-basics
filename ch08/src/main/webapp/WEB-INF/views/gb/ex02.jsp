@@ -7,29 +7,44 @@
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"></script>
 <script>
+var render = function(vo,mode){
+	var htmls =	"<li data-no='"+vo.no+"'>"+
+			"<strong>"+vo.name+"</strong>"+
+			"<p>"+vo.message+"</p>" +"<strong></strong>"
+			+"<a href='' data-no='"+vo.no+"'>삭제</a> "+
+				"</li>";
+
+		$("#list-guestbook")[mode ? "prepend":"append"](htmls); 
+		
+}
+
 //
 //	scroll event는 ch07/ex37 참고
 //	api url /guestbook/api?sno=10: sno보다 작은 no의 row를 top-k(limit 0~k) 구현 할 것.
 //
-	var fetch = function(){
-		$.ajax({
-			url:"${pageContext.request.contextPath}/guestbook/api?sno=10",
-			type: "get",
-			dataType: "json",
-			success: function(response){
-				if(reponse.result === 'fail'){
-					console.error(reponse.message);
-					return;
-				}
-				
-		//render(response.data);
+	var fetch = function() {
+	
+	$.ajax({
+		url: "${pageContext.request.contextPath}/guestbook/api?sno=10",
+		type: "get",
+		dataType: "json",
+		success: function(response) { 
+			if(response.result === 'fail') {
+				return;
+			}
+			response.data.forEach(function(vo){
+				render(vo);
+			});
+			
+			}
+		});	
 	}
-	$(function(){
+$(function(){
 		//$(window).scroll(function(){
 		//});
 		//최초 리스트 가져오기
 		fetch();
-	});
+	})
 </script>
 </head>
 
