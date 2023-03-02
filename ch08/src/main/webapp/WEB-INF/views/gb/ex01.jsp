@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"></script>
 <script>
-var render = function(vo){
+var render = function(vo, mode){
 	var htmls =	"<li data-no=''>"+
 			"<strong>"+vo.name+"</strong>"+
 			"<p>"+vo.message+"</p>" +"<strong></strong>"
 			+"<a href='' data-no=''>삭제</a> "+
 				"</li>";
 				
-	$("#list-guestbook").prepend(htmls);  //rendering
+				$("#list-guestbook")[mode? "prepend" : "append"](htmls);  //rendering
 				
 }
 	$(function(){
@@ -36,8 +36,8 @@ var render = function(vo){
 				contentType: "application/json",
 				data: JSON.stringify(vo),
 				success: function(response){
-					if(reponse.result === 'fail'){
-						console.error(reponse.message);
+					if(response.result === 'fail'){
+						console.error(response.message);
 						return;
 					}
 					
