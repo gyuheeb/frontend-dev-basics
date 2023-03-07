@@ -19,17 +19,23 @@ const myAsyncFn02 = function(param){
    
 } 
 
-//test01: success
-myAsyncFn02("data").then(function(result){
-    console.log(result);
-})
-//test02: fail
-.catch(function(error){
-       console.log(error);
-});
+if(require.main == module){
 
-console.log('wait.............');
+    //test01: success
+    myAsyncFn02("data").then(function(result){
+        console.log(result);
+    })
+    //test02: fail
+    .catch(function(error){
+        console.log(error);
+    });
 
+    console.log('wait.............');
+
+}else{
+
+    module.exports = myAsyncFn02;
+}
 
 
 
